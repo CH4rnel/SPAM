@@ -10,11 +10,12 @@ from app.core.config import settings
 
 
 engine = create_async_engine(
-    settings.database_url,
+    settings.database_async_url,
     echo=settings.environment == "development",
 )
 
-AsyncSessionLocal = async_sessionmaker(
+
+AsyncSessionFactory = async_sessionmaker(
     bind=engine,
     class_=AsyncSession,
     expire_on_commit=False,
