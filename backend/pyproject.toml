@@ -1,0 +1,61 @@
+[project]
+name = "spam-network"
+version = "0.1.0"
+description = "Anonymous AI-powered crypto social network"
+requires-python = ">=3.12"
+
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "sqlalchemy>=2.0",
+    "asyncpg",
+    "psycopg[binary]",
+    "alembic",
+    "pydantic-settings",
+    "python-dotenv",
+    "aiogram",
+]
+
+
+[dependency-groups]
+
+dev = [
+    "pytest",
+    "pytest-asyncio",
+    "ruff",
+    "mypy",
+    "pre-commit",
+]
+
+
+[tool.ruff]
+
+line-length = 88
+
+
+[tool.ruff.lint]
+
+select = [
+    "E",
+    "F",
+    "I",
+]
+
+
+[tool.pytest.ini_options]
+
+asyncio_mode = "auto"
+
+
+[tool.setuptools.packages.find]
+
+where = ["."]
+
+include = [
+    "app*",
+]
+
+exclude = [
+    "migrations*",
+    "tests*",
+]

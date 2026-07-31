@@ -1,0 +1,36 @@
+# ♃ ☿ 𓂀  OCCULT CONFIG LAYER 𓂀  ☿ ♃
+
+services:
+
+  postgres:
+
+    image: postgres:16
+
+    container_name: spam-postgres
+
+    restart: always
+
+
+    environment:
+
+      POSTGRES_USER: spam
+
+      POSTGRES_PASSWORD: spam_password
+
+      POSTGRES_DB: spam_network
+
+
+    ports:
+
+      - "5432:5432"
+
+
+    volumes:
+
+      - postgres_data:/var/lib/postgresql/data
+
+
+
+volumes:
+
+  postgres_data:

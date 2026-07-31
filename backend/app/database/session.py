@@ -1,35 +1,21 @@
 # ♃ ☿ 𓂀  OCCULT CONFIG LAYER 𓂀  ☿ ♃
 
 from sqlalchemy.ext.asyncio import (
-    create_async_engine,
-    async_sessionmaker,
     AsyncSession,
+    async_sessionmaker,
+    create_async_engine,
 )
 
-
-DATABASE_URL = (
-    "postgresql+asyncpg://"
-    "spam:"
-    "spam_password@"
-    "localhost:5432/"
-    "spam_network"
-)
+from app.core.config import settings
 
 
 engine = create_async_engine(
-    DATABASE_URL,
-    echo=True
+    settings.database_url,
+    echo=settings.environment == "development",
 )
-
 
 AsyncSessionLocal = async_sessionmaker(
     bind=engine,
     class_=AsyncSession,
-    expire_on_commit=False
+    expire_on_commit=False,
 )
-
-
-async def get_session():
-
-    async with AsyncSessionLocal() as session:
-        yield session

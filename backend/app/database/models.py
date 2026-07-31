@@ -5,14 +5,10 @@ from datetime import datetime
 from sqlalchemy.orm import (
     DeclarativeBase,
     Mapped,
-    mapped_column,
+    mapped_column
 )
 
-from sqlalchemy import (
-    String,
-    Integer,
-    DateTime,
-)
+from sqlalchemy import String, Integer, DateTime
 
 
 class Base(DeclarativeBase):
@@ -38,7 +34,6 @@ class User(Base):
 
 
     rank: Mapped[str] = mapped_column(
-        String(50),
         default="Wanderer"
     )
 
@@ -50,7 +45,6 @@ class User(Base):
 
 
     language: Mapped[str] = mapped_column(
-        String(10),
         default="en"
     )
 

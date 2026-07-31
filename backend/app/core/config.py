@@ -1,10 +1,15 @@
 # ♃ ☿ 𓂀  OCCULT CONFIG LAYER 𓂀  ☿ ♃
 
-from pydantic_settings import BaseSettings
+from pathlib import Path
+
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+BASE_DIR = Path(__file__).resolve().parents[3]
+ENV_FILE = BASE_DIR / ".env"
 
 
 class Settings(BaseSettings):
-
     app_name: str = "SPAM Network"
     app_version: str = "0.1.0"
 
@@ -13,9 +18,12 @@ class Settings(BaseSettings):
     host: str = "0.0.0.0"
     port: int = 8000
 
+    database_url: str
 
-    class Config:
-        env_file = ".env"
+    model_config = SettingsConfigDict(
+        env_file=ENV_FILE,
+        extra="ignore",
+    )
 
 
 settings = Settings()
