@@ -80,3 +80,13 @@ Architecture stabilization.
 - Anonymous identity
 - Database migrations
 - First working bot
+
+## [Foundation Step 3]
+
+Added:
+
+- FastAPI application factory
+- API v1 structure
+- Healthcheck endpoint
+- Swagger documentation
+- Basic backend runtime

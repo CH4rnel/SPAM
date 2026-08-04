@@ -1,10 +1,11 @@
-# ♃ ☿ 𓂀  OCCULT CONFIG LAYER 𓂀  ☿ ♃
+# ♃ ☿ 𓂀  SPAM CONFIG LAYER 𓂀  ☿ ♃
 
 from sqlalchemy.orm import DeclarativeBase
 
 
 class Base(DeclarativeBase):
+    """
+    SQLAlchemy declarative base.
+    """
+
     pass
-
-
-from app.models import User

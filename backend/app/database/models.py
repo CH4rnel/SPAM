@@ -1,55 +1,36 @@
-# ♃ ☿ 𓂀  OCCULT CONFIG LAYER 𓂀  ☿ ♃
+# ♃ ☿ 𓂀  SPAM CONFIG LAYER 𓂀  ☿ ♃
 
-from datetime import datetime
-
-from sqlalchemy.orm import (
-    DeclarativeBase,
-    Mapped,
-    mapped_column
-)
-
-from sqlalchemy import String, Integer, DateTime
+from sqlalchemy import DateTime, Integer, String
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 
 class Base(DeclarativeBase):
+    """
+    Base database model.
+    """
+
     pass
 
 
-
 class User(Base):
+    """
+    Anonymous SPAM user model.
+    """
 
     __tablename__ = "users"
 
-
     id: Mapped[int] = mapped_column(
-        primary_key=True
-    )
-
-
-    spam_hash: Mapped[str] = mapped_column(
-        String(64),
-        unique=True,
-        index=True
-    )
-
-
-    rank: Mapped[str] = mapped_column(
-        default="Wanderer"
-    )
-
-
-    karma: Mapped[int] = mapped_column(
         Integer,
-        default=0
+        primary_key=True,
     )
 
-
-    language: Mapped[str] = mapped_column(
-        default="en"
+    anonymous_hash: Mapped[str] = mapped_column(
+        String(128),
+        unique=True,
+        nullable=False,
     )
 
-
-    created_at: Mapped[datetime] = mapped_column(
+    created_at: Mapped[DateTime] = mapped_column(
         DateTime,
-        default=datetime.utcnow
+        nullable=False,
     )

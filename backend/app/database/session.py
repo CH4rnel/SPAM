@@ -1,4 +1,4 @@
-# ♃ ☿ 𓂀  OCCULT CONFIG LAYER 𓂀  ☿ ♃
+# ♃ ☿ 𓂀  SPAM CONFIG LAYER 𓂀  ☿ ♃
 
 from sqlalchemy.ext.asyncio import (
     AsyncSession,
@@ -8,15 +8,22 @@ from sqlalchemy.ext.asyncio import (
 
 from app.core.config import settings
 
-
 engine = create_async_engine(
-    settings.database_async_url,
-    echo=settings.environment == "development",
+    settings.database_url,
+    echo=False,
 )
 
 
-AsyncSessionFactory = async_sessionmaker(
-    bind=engine,
-    class_=AsyncSession,
+async_session_factory = async_sessionmaker(
+    engine,
     expire_on_commit=False,
 )
+
+
+async def get_session() -> AsyncSession:
+    """
+    Database session dependency.
+    """
+
+    async with async_session_factory() as session:
+        yield session

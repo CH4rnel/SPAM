@@ -31,7 +31,7 @@ dev = [
 [tool.ruff]
 
 line-length = 88
-
+target-version = "py314"
 
 [tool.ruff.lint]
 
@@ -41,21 +41,15 @@ select = [
     "I",
 ]
 
-
-[tool.pytest.ini_options]
-
-asyncio_mode = "auto"
-
-
-[tool.setuptools.packages.find]
-
-where = ["."]
-
-include = [
-    "app*",
+ignore = [
+    "E402",
 ]
 
-exclude = [
-    "migrations*",
-    "tests*",
+
+[tool.ruff.lint.isort]
+
+known-first-party = [
+    "app",
 ]
+
+force-sort-within-sections = true
