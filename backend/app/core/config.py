@@ -4,13 +4,11 @@ from pathlib import Path
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+
 BASE_DIR = Path(__file__).resolve().parents[3]
 
 
 class Settings(BaseSettings):
-    """
-    Global application configuration.
-    """
 
     app_name: str = "SPAM Network"
 
@@ -22,9 +20,14 @@ class Settings(BaseSettings):
 
     port: int = 8000
 
+
     database_async_url: str
 
     database_sync_url: str
+
+
+    identity_secret: str = "development-secret-change-me"
+
 
     model_config = SettingsConfigDict(
         env_file=BASE_DIR / ".env",

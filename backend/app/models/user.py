@@ -1,8 +1,5 @@
 # ♃ ☿ 𓂀  SPAM CONFIG LAYER 𓂀  ☿ ♃
 
-# ♃ ☿ 𓂀 SPAM IDENTITY LAYER 𓂀 ☿ ♃
-
-
 from datetime import datetime
 
 from sqlalchemy import DateTime, Integer, String
